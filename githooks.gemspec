@@ -1,20 +1,25 @@
+# -*- encoding: utf-8 -*-
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-Gem::Specification.new do |spec|
-  spec.name        = 'githooks-gem'
-  spec.version     = '1.0.0' 
-  spec.summary     = "Testing Gem"
-  spec.description = "A simple hello world gem"
-  spec.authors     = ["Bapu Reddy"]
-  spec.email       = 'breddy@prosper.com'
 
-  #spec.files       = ["lib/git-hooks.rb"]
-  spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ["lib"]
-  #spec.extensions    << 'git-hooks.sh'
-  spec.add_development_dependency 'bundler', '~> 1.7'
-  spec.add_development_dependency 'rspec', '~> 3.2'
+Gem::Specification.new do |gem|
+  gem.name          = "githooks"
+  gem.version       = "0.0.1"
+  gem.authors       = ["Bapu"]
+  gem.email         = ["breddy@prosper.com"]
+  gem.description   = ""
+  gem.summary       = ""
+  gem.homepage      = "https://github.com/"
+  gem.license       = "MIT"
 
+  gem.add_development_dependency "rspec", "~> 3.2"
+  gem.add_development_dependency "rake", "~> 10.0"
+  #gem.add_development_dependency "rake-compiler", ">= 0.8.3"
+
+  gem.files         = `git ls-files`.split($/)
+  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.extensions    = ["ext/extconf.rb"]
+  gem.require_paths = ["lib"]
 end
-

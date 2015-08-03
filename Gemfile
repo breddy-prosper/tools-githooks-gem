@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in githooks.gemspec
+# Dependencies are specified in foo.gemspec
 gemspec
-
